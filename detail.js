@@ -17,39 +17,48 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function renderBusinessDetail(business) {
+    const mapUrl = business.mapUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(business.name + " " + business.address)}`;
+    const lat = business.latitude || "Not Available";
+    const long = business.longitude || "Not Available";
+    
+    // Format phone number for display if needed
+    const displayPhone = business.phone || "Contact Unavailable";
+
     detailContent.innerHTML = `
             <div class="detail-card">
-                <a href="index.html" class="back-btn back-btn-absolute">
+                <a href="index.html" class="back-btn-top">
                     <span>←</span> Back to Collection
                 </a>
                 
                 <div class="detail-header-section">
-                    <span class="detail-category">${business.category}</span>
+                    <span class="category-badge">${business.category}</span>
                     <h1 class="detail-title">${business.name}</h1>
-                    <div style="font-family: var(--font-heading); font-size: 1.25rem; color: var(--text-secondary); margin-top: 24px; line-height: 1.8; max-width: 700px; margin-left: auto; margin-right: auto;">
-                        ${business.description}
+                    
+                    <div class="divider"></div>
+                    
+                    <!-- Address Section -->
+                    <div class="detail-section-title">
+                        <i>📍</i> ADDRESS
                     </div>
-                </div>
-                
-                <div class="detail-info-grid">
-                    <div class="info-item">
-                        <h4>Location</h4>
-                        <p>${business.address}</p>
+                    <div class="address-text">
+                        ${business.address}
                     </div>
                     
-                    <div class="info-item">
-                        <h4>Reservations</h4>
-                        <p><a href="tel:${business.phone.replace(/\s/g, "")}">${business.phone}</a></p>
+                    <a href="${mapUrl}" target="_blank" class="map-btn">
+                        🗺️ Open in Maps
+                    </a>
+                    
+                    <!-- Coordinates Box -->
+                    <div class="info-box">
+                        <span class="info-label">Coordinates:</span> ${lat}, ${long}
                     </div>
                     
-                    <div class="info-item">
-                        <h4>Hours</h4>
-                        <p>${business.hours}</p>
+                    <!-- Phone Section -->
+                    <div class="detail-section-title" style="margin-top: 40px;">
+                        <i>📞</i> PHONE
                     </div>
-                    
-                    <div class="info-item">
-                        <h4>Connect</h4>
-                        <p><a href="${business.website}" target="_blank" rel="noopener noreferrer">Visit Website ↗</a></p>
+                    <div class="info-box" style="background: #efebe9;">
+                        ${displayPhone}
                     </div>
                 </div>
             </div>
@@ -57,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updatePageTitle(name) {
-    document.title = `${name} | Pune Dining Collection`;
+    document.title = `${name} | Akola Book Stores`;
   }
 
   function renderNotFound() {

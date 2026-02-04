@@ -52,25 +52,29 @@ document.addEventListener('DOMContentLoaded', function() {
              }
         };
 
-        // Format number with leading zero
-        const formattedNumber = displayNumber < 10 ? `0${displayNumber}` : displayNumber;
+        // Format phone number
+        const displayPhone = business.phone && business.phone !== "Contact Unavailable" ? business.phone : "No Phone";
 
         card.innerHTML = `
-            <span class="card-number">${formattedNumber}</span>
+            <div class="card-badge">${displayNumber}</div>
             
-            <h3 class="business-name">${business.name}</h3>
+            <h3 class="card-title">${business.name}</h3>
             
-            <div class="business-address">
+            <div class="card-address">
                 ${business.address}
             </div>
             
-            <div class="card-pills">
-                <span class="pill">${business.category.split(' ')[0]}</span> <!-- First word of category -->
-                <span class="pill">Pune</span>
+            <div class="card-meta">
+                <div class="meta-pill">
+                    <i>📞</i> ${displayPhone}
+                </div>
+                <div class="meta-pill">
+                    ${business.category.split(' ')[0]}
+                </div>
             </div>
             
-            <a href="detail.html?id=${business.id}" class="view-btn">
-                Explore
+            <a href="detail.html?id=${business.id}" class="view-btn-block">
+                View Details
             </a>
         `;
 

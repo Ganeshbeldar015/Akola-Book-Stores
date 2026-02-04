@@ -1,7 +1,370 @@
 /* ============================================
-   Modern Vintage Theme
-   "Sophisticated Dining Directory"
+   Vintage Minimalist Theme
+   "Vitthal Book Seller" Style
    ============================================ */
+:root {
+  /* Color Palette */
+  --bg-body: #fdfbf7;      /* Warm Cream Background */
+  --bg-card: #ffffff;      /* White Card Background */
+  --bg-badge: #e6e0d8;     /* Light Grey/Beige for badges */
+  --bg-pill: #eaddcf;      /* Beige for pills */
+  --bg-highlight: #ece5dd; /* Highlight/Hover background */
+
+  --text-primary: #2c1810; /* Dark Brown/Black for headings */
+  --text-secondary: #5d4037; /* Muted Brown for body text */
+  --text-accent: #8d6e63;  /* Accent text */
+  --text-muted: #8b8b8b;   /* Light grey text for numbers */
+
+  --primary-color: #3e2723; /* Dark Coffee */
+  --accent-color: #a1887f; /* Secondary Brown */
+  --gold-accent: #bcaaa4;  /* Muted Gold */
+  
+  --border-color: #d7ccc8;
+  --border-hover: #a1887f; /* Brown border on hover */
+
+  /* Typography */
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+
+  /* Spacing & Layout */
+  --radius-card: 8px;
+  --radius-pill: 4px;
+  --radius-circle: 50%;
+
+  /* Effects */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+  --shadow-hover: 0 8px 24px rgba(62, 39, 35, 0.12);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  line-height: 1.6;
+  background-image:
+    linear-gradient(rgba(62, 39, 35, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(62, 39, 35, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================
+   Header
+   ============================================ */
+.header {
+  text-align: center;
+  padding: 60px 0;
+  margin-bottom: 20px;
+}
+
+.logo h1 {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.tagline {
+  color: var(--text-secondary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   Detail Page Styles
+   ============================================ */
+.detail-content {
+  padding-bottom: 80px;
+}
+
+.detail-card {
+  background: transparent;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.detail-header-section {
+  background: white;
+  padding: 60px;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.detail-title {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
+.category-badge {
+  display: inline-block;
+  background: #a1887f;
+  color: white;
+  padding: 8px 24px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+}
+
+.divider {
+  height: 2px;
+  background: #8d6e63;
+  margin: 40px 0;
+  opacity: 0.3;
+}
+
+.detail-section-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.detail-section-title i {
+  color: #c2185b; /* Pinkish red for pins/phones */
+}
+
+.address-text {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: #8d6e63;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+
+.map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #a1887f; /* Muted Gold/Brown */
+  color: white;
+  padding: 14px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #bcaaa4 0%, #8d6e63 100%);
+  box-shadow: 0 4px 12px rgba(141, 110, 99, 0.3);
+  margin-bottom: 40px;
+  transition: transform 0.2s;
+}
+
+.map-btn:hover {
+  transform: translateY(-2px);
+}
+
+.info-box {
+  background: #eee8e5; /* Light grey/beige */
+  padding: 24px 30px;
+  border-radius: 8px;
+  border-left: 4px solid #a1887f;
+  margin-bottom: 30px;
+  font-family: "Courier New", monospace;
+  color: #4e342e;
+  font-size: 0.95rem;
+}
+
+.info-label {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-right: 12px;
+  color: #2c1810;
+}
+
+/* ============================================
+   Index Card Grid (Redesigned)
+   ============================================ */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.business-card {
+  background: white;
+  border-radius: 6px;
+  padding: 30px;
+  position: relative;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  min-height: 380px;
+  cursor: pointer;
+}
+
+.business-card:hover {
+  /* Brown border effect from image */
+  border: 1px solid #8d6e63;
+  box-shadow: -4px 4px 0px 0px #8d6e63; /* Shadow offset to left-bottom/right-bottom */
+  transform: translateY(-4px);
+}
+
+.card-badge {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  background: #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: #5d4037;
+  font-size: 0.9rem;
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: #2c1810;
+  margin-bottom: 20px;
+  margin-right: 40px; /* Space for badge */
+  line-height: 1.2;
+}
+
+.card-address {
+  font-size: 1rem;
+  color: #6d4c41;
+  margin-bottom: auto; /* Push content down */
+  line-height: 1.6;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.meta-pill {
+  background: #efebe9;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #5d4037;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.meta-pill i {
+  color: #c2185b;
+}
+
+.view-btn-block {
+  background: #2c1810;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  border-radius: 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  display: block;
+  transition: background 0.2s;
+}
+
+.view-btn-block:hover {
+  background: #4e342e;
+}
+
+/* ============================================
+   Pagination
+   ============================================ */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 60px;
+}
+
+.page-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d7ccc8;
+  background: white;
+  border-radius: 50%;
+  color: #5d4037;
+  font-family: var(--font-heading);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.page-btn.active {
+  background: #3e2723;
+  color: white;
+  border-color: #3e2723;
+}
+
+.page-btn:hover:not(.active) {
+  background: #efebe9;
+}
+
+/* Back Button */
+.back-btn-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  text-decoration: none;
+  color: #5d4037;
+  font-weight: 500;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.back-btn-top:hover {
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
 :root {
   /* Color Palette - Restored Vintage Cream & Brown */
   --bg-body: #fdfbf7; /* Cream */

@@ -1,0 +1,392 @@
+/* ============================================
+   Modern Vintage Theme
+   "Sophisticated Dining Directory"
+   ============================================ */
+:root {
+    /* Color Palette - Restored Vintage Cream & Brown */
+    --bg-body: #fdfbf7;      /* Cream */
+    --bg-card: #ffffff;      /* Pure White */
+    --bg-accent: #efebe9;    /* Light Beige for pills/sections */
+    
+    --text-primary: #3e2723;  /* Dark Coffee Brown */
+    --text-secondary: #5d4037; /* Muted Brown */
+    --text-accent: #8d6e63;   /* Soft Brown/Gold */
+    
+    --primary-color: #3e2723; /* Dark Brown */
+    --accent-color: #a1887f;  /* Muted Gold/Brown */
+    
+    --border-light: #d7ccc8;
+    
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    
+    /* Shadows & Effects */
+    --shadow-card: 0 4px 24px rgba(62, 39, 35, 0.06); /* Brown-tinted shadow */
+    --shadow-hover: 0 12px 32px rgba(62, 39, 35, 0.12);
+    --radius-card: 12px;
+    --radius-pill: 100px;
+    
+    --transition: cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    /* Subtle texture restored */
+    background-image: 
+        linear-gradient(rgba(62, 39, 35, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(62, 39, 35, 0.02) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+/* ============================================
+   Hero / Header Section
+   ============================================ */
+.header {
+    text-align: center;
+    padding: 100px 0 60px;
+    position: relative;
+    /* Gradient blended with cream background */
+    background: linear-gradient(to bottom, #ffffff 0%, var(--bg-body) 100%);
+}
+
+.logo {
+    margin-bottom: 24px;
+}
+
+.logo h1 {
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+}
+
+.tagline {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--text-accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    opacity: 0.9;
+    margin-bottom: 32px;
+}
+
+.location-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    padding: 10px 24px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-light);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    box-shadow: 0 4px 12px rgba(62, 39, 35, 0.05);
+    transition: var(--transition);
+}
+
+.location-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(62, 39, 35, 0.1);
+    border-color: var(--text-primary);
+}
+
+/* ============================================
+   Grid Layout
+   ============================================ */
+.main-content {
+    padding: 40px 0 80px;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+/* ============================================
+   Business Card Design
+   ============================================ */
+.business-card {
+    background: var(--bg-card);
+    padding: 40px 32px;
+    border-radius: var(--radius-card);
+    transition: var(--transition);
+    border: 1px solid transparent;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.business-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent-color);
+}
+
+/* Number Badge */
+.card-number {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--bg-accent); 
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-weight: 700;
+    line-height: 1;
+    opacity: 1;
+    transition: var(--transition);
+    /* Make the number slightly more visible in cream theme */
+    color: #efebe9; 
+    -webkit-text-stroke: 1px #d7ccc8;
+}
+
+.business-card:hover .card-number {
+    color: #d7ccc8;
+    opacity: 0.4;
+}
+
+.business-name {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    line-height: 1.2;
+    padding-right: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.business-address {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    flex-grow: 1;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* Tags / Pills */
+.card-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.pill {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    padding: 6px 0;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.pill:first-child {
+    color: var(--primary-color);
+    border-color: var(--accent-color);
+}
+
+/* Action Button */
+.view-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 16px;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 8px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.view-btn:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   Pagination
+   ============================================ */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 60px;
+}
+
+.page-btn {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-light);
+    background: white;
+    border-radius: 50%;
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.page-btn:hover:not(:disabled) {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background: var(--bg-accent);
+    transform: scale(1.1);
+}
+
+.page-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.page-btnNav {
+    width: auto;
+    padding: 0 24px;
+    border-radius: var(--radius-pill);
+}
+
+/* ============================================
+   Detail Content
+   ============================================ */
+.detail-card {
+    background: white;
+    padding: 80px;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    max-width: 900px;
+    margin: -60px auto 0;
+    position: relative;
+    border: 1px solid var(--border-light);
+}
+
+.detail-header-section {
+    text-align: center;
+    margin-bottom: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.detail-category {
+    color: var(--accent-color);
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.detail-title {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: var(--primary-color);
+}
+
+.detail-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.info-item h4 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-accent);
+    margin-bottom: 8px;
+}
+
+.info-item p, .info-item a {
+    font-size: 1.2rem;
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.info-item a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.footer {
+    text-align: center;
+    padding: 80px 0 40px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-light);
+    margin-top: 60px;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.business-card {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0; 
+}
+
+.business-card:nth-child(1) { animation-delay: 0.1s; }
+.business-card:nth-child(2) { animation-delay: 0.2s; }
+.business-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .cards-container { grid-template-columns: repeat(2, 1fr); }
+    .logo h1 { font-size: 3.5rem; }
+}
+
+@media (max-width: 768px) {
+    .cards-container { grid-template-columns: 1fr; }
+    .detail-card { padding: 40px; }
+    .detail-info-grid { grid-template-columns: 1fr; }
+}

@@ -1,28 +1,28 @@
 // Detail Page JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-    const detailContent = document.getElementById('detailContent');
-    
-    // Get business ID from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const businessId = parseInt(urlParams.get('id'));
-    
-    // Find the business
-    const business = businesses.find(b => b.id === businessId);
-    
-    if (business) {
-        renderBusinessDetail(business);
-        updatePageTitle(business.name);
-    } else {
-        renderNotFound();
-    }
-    
-    function renderBusinessDetail(business) {
-        detailContent.innerHTML = `
-            <div style="text-align: center; margin-bottom: 40px;">
-                <a href="index.html" class="back-link" style="text-decoration: none; color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">← Back to Collection</a>
-            </div>
-            
+document.addEventListener("DOMContentLoaded", function () {
+  const detailContent = document.getElementById("detailContent");
+
+  // Get business ID from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const businessId = parseInt(urlParams.get("id"));
+
+  // Find the business
+  const business = businesses.find((b) => b.id === businessId);
+
+  if (business) {
+    renderBusinessDetail(business);
+    updatePageTitle(business.name);
+  } else {
+    renderNotFound();
+  }
+
+  function renderBusinessDetail(business) {
+    detailContent.innerHTML = `
             <div class="detail-card">
+                <a href="index.html" class="back-btn back-btn-absolute">
+                    <span>←</span> Back to Collection
+                </a>
+                
                 <div class="detail-header-section">
                     <span class="detail-category">${business.category}</span>
                     <h1 class="detail-title">${business.name}</h1>
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     <div class="info-item">
                         <h4>Reservations</h4>
-                        <p><a href="tel:${business.phone.replace(/\s/g, '')}">${business.phone}</a></p>
+                        <p><a href="tel:${business.phone.replace(/\s/g, "")}">${business.phone}</a></p>
                     </div>
                     
                     <div class="info-item">
@@ -54,18 +54,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
         `;
-    }
-    
-    function updatePageTitle(name) {
-        document.title = `${name} | Pune Dining Collection`;
-    }
-    
-    function renderNotFound() {
-        detailContent.innerHTML = `
+  }
+
+  function updatePageTitle(name) {
+    document.title = `${name} | Pune Dining Collection`;
+  }
+
+  function renderNotFound() {
+    detailContent.innerHTML = `
             <div style="text-align: center; padding: 100px 0;">
                 <h2 style="font-family: var(--font-heading); font-size: 3rem; margin-bottom: 20px;">Restaurant Not Found</h2>
                 <a href="index.html" class="view-btn" style="display: inline-block; width: auto; padding: 12px 30px;">Return Home</a>
             </div>
         `;
-    }
+  }
 });
